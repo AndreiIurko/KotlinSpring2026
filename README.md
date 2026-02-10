@@ -9,6 +9,12 @@ In this repo you will find all the material from our Kotlin classes:
   - [Helper sources](./src/main/kotlin/org/jetbrains/kotlin/public/course/introduction)
   - [Practice task](./src/main/kotlin/org/jetbrains/kotlin/public/course/introduction/practice)
 
+- OOP:
+
+  - [Kotlin Notebook](./src/notebooks/oop/ObjectOrientedProgramming.ipynb)
+  - [Helper sources](./src/main/kotlin/org/jetbrains/kotlin/public/course/oop)
+  - [Practice tasks](./src/main/kotlin/org/jetbrains/kotlin/public/course/oop/practice)
+
 - JVM:
 
   - [Presentation](./src/notebooks/jvm/The_Java_Virtual_Machine.pdf)
@@ -17,12 +23,6 @@ In this repo you will find all the material from our Kotlin classes:
 
   - [Presentation](./src/notebooks/gradle/Gradle.pdf)
   - [Practice task](https://github.com/nbirillo/jvm-dev-gradle-task)
-
-- OOP:
-
-  - [Kotlin Notebook](./src/notebooks/oop/ObjectOrientedProgramming.ipynb)
-  - [Helper sources](./src/main/kotlin/org/jetbrains/kotlin/public/course/oop)
-  - [quick draw solution](https://github.com/mikrise2/quick_draw_solution)
 
 - Generics:
 

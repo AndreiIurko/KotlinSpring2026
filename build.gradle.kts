@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.backend.common.phaser.transform
 
 plugins {
     kotlin("jvm") version "1.9.22"
@@ -23,7 +22,7 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(17)
 }
 
 application {
