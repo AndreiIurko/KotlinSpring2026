@@ -1,0 +1,26 @@
+1. Definition of Object. Example of invariant, abstraction, encapsulation, inheritance, polymorphism
+
+2. Constructors + init (Superclass primary constructor -> superclass init block -> superclass secondary constructor -> 
+class primary constructor -> class init block -> class secondary constructor
+
+3. Abstraction - example of interface vs. abstract class, abstract fun/property
+
+4. Encapsulation - example of private/protected/open/final/etc.
+
+5. Inheritance - show example of the cat
+
+6. Polymorphism - also example from notebook
+
+7. Properties - get/set examples, without backing field as well
+
+8. Operator overloading from the notebook
+
+9. Extension functions - examples, under the hood, compile-time determination of that to execute
+
+10. Data class - regular class, but with some methods + final (can extend other classes)
+
+11. Enum classes - good for constants, cannot extend other classes
+
+12. Sealed class - good for "generic" constants
+
+13. Companion object: used when "static" objects/functions are needed tied to the class
