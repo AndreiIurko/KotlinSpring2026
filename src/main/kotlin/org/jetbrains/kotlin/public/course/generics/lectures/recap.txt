@@ -1,0 +1,15 @@
+1. Fun fact: everything in Kotlin is a reference
+
+2. Generics are an answer for the problem "I want to write a function that works with types XXX, but I don't want to repeat it for each type"
+ - We have a "pure" class in result code (no cast from some common superclass)
+ - We have compilation checks on types used in our code
+
+3. Examples of Any? vs * and why if A: B we can't cast Class<A> to class<B> or opposite
+
+4. <in>, <out> - just a way of overcoming issues with A: B relationship between class<A> and class<B>
+
+5. Type erasure - example when applicable
+
+6. Inline and crossinline from the notebook. Important mention: do not use inline unless necessary because of performance OR information about type itself
+
+7. Example of reified usage

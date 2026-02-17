@@ -2,55 +2,56 @@ package org.jetbrains.kotlin.public.course.generics.practice.task.projections.ta
 
 /* Projections #1
 
-In this task, you need to work with projections.
-First of all, you need to make it possible to create different types of MailBox.
-Then, you need to modify code somehow to be able to create topRatedPostman and juniorPostman:
- - The topRatedPostman can send ONLY express postcards
- - The juniorPostman can send both regular and express postcards
+Implement a system of news agencies with the following rules:
+ - There exists only regular and elite agencies
+ - Regular can accept any scoop, elite - only elite scoops
+ - Elite reporter can deliver only elite scoops, but to any agency
+ - Regular reporter can deliver any scoop, but only to regular agencies
 **/
 
-interface Sender {
-    fun send(item: Any)
+interface NewsAccepter {
+    fun deliverScoop(item: Any)
 }
 
-class MailBox(private var box: Any? = null): Sender {
-    override fun send(item: Any) {
-        printCurrentBoxState()
-        println("Sending the box: $item!")
-        box = item
+class NewsAgency<T>: NewsAccepter {
+    private var scoops: MutableList<Any> = mutableListOf()
+    
+    override fun deliverScoop(item: Any) {
+        scoops.add(item)
     }
-
-    private fun printCurrentBoxState() {
-        if (box != null) {
-            println("I have a box: $box!")
-        } else  {
-            println("I have nothing")
-        }
-    }
-
 }
 
-class Postman(private val mailboxes: List<Sender>): Sender {
-    override fun send(item: Any) {
-        mailboxes.forEach { it.send(item) }
+class Reporter(private val agencies: List<NewsAccepter>): NewsAccepter {
+    override fun deliverScoop(item: Any) {
+        agencies.forEach { it.deliverScoop(item) }
     }
-
 }
-interface Delivery
 
-open class Postcard(open val origin: String) : Delivery
+interface Scoop
 
-data class ExpressPostcard(val priceEuro: Int, override val origin: String) : Postcard(origin)
+open class Normal(open val info: String) : Scoop
+
+data class Sensational(val reward: Int, override val info: String) : Normal(info)
 
 fun main() {
-    // TODO: This code should became compilable
-//    val postcardStorage = MailBox<Postcard>()
-//    val expressPostcardStorage = MailBox<ExpressPostcard>()
+    val sensational = Sensational(150, "Students from NUP won ICPC")
+    val normal = Normal("Students from NUP has Kotlin lecture")
+    // accepts any scoop
+    val regularAgency = NewsAgency<Normal>()
+    regularAgency.deliverScoop(normal)
+    regularAgency.deliverScoop(sensational)
+    // accepts only "elite" scoops
+    val eliteAgency = NewsAgency<Sensational>()
+    eliteAgency.deliverScoop(normal) // should rise a compilation error
+    eliteAgency.deliverScoop(sensational) 
 
-    val expressPostcard = ExpressPostcard(15, "Serbia")
-    val postcard = Postcard("Germany")
-
-    // TODO: add code to create topRatedPostman and juniorPostman.
-    //  The topRatedPostman can send ONLY express postcards
-    //  The juniorPostman can send both regular and express postcards
+    // works by submitting elite scoops to everyone and making a lot of many
+    val eliteReporter = Reporter(listOf(regularAgency, eliteAgency))
+    eliteReporter.deliverScoop(normal) // should return a compilation error
+    eliteReporter.deliverScoop(sensational)
+    
+    // works by submitting normal scoops mostly and sometimes elite ones (but only regular agencies are ready to work with them)
+    val regularReporter = Reporter(listOf(regularAgency))
+    regularReporter.deliverScoop(normal)
+    regularReporter.deliverScoop(sensational)
 }

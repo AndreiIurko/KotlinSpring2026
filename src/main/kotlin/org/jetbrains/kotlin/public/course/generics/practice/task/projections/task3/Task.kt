@@ -38,6 +38,7 @@ fun main() {
     TODO("Create a new HashMap and uncomment code bellow")
 //    parsersHashMap[JvmLanguage::class.java] = JvmLanguageParser()
 //    parsersHashMap[BlockBasedLanguage::class.java] = BlockBasedLanguageParser()
+//    parsersHashMap[String::class.java] = JvmLanguageParser() // ERROR
 //
 //    val scratch = BlockBasedLanguage()
 //    val foundParser = parsersHashMap[scratch.javaClass]

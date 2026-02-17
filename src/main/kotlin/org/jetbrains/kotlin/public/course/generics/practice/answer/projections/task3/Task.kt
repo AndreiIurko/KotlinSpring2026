@@ -38,6 +38,7 @@ fun main() {
     val parsersHashMap = HashMap<Class<out ProgrammingLanguage>, LanguageParser<*>>()
     parsersHashMap[JvmLanguage::class.java] = JvmLanguageParser()
     parsersHashMap[BlockBasedLanguage::class.java] = BlockBasedLanguageParser()
+    // parsersHashMap[String::class.java] = JvmLanguageParser() // ERROR
 
     val scratch = BlockBasedLanguage()
     val foundParser = parsersHashMap[scratch.javaClass]
